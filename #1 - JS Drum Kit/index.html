@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Drum Kit</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="logo-github.svg" />
+  </head>
+  <body>
+    <h1>JS Drum Kit</h1>
+    <p>#1 of JavaScript30</p>
+    <div class="key-container">
+      <button class="key" data-key="65">
+        <p>A</p>
+        <span class="sound">CLAP</span>
+      </button>
+      <button class="key" data-key="83">
+        <p>S</p>
+        <span class="sound">HIHAT</span>
+      </button>
+      <button class="key" data-key="68">
+        <p>D</p>
+        <span class="sound">KICK</span>
+      </button>
+      <button class="key" data-key="70">
+        <p>F</p>
+        <span class="sound">OPENHAT</span>
+      </button>
+      <button class="key" data-key="71">
+        <p>G</p>
+        <span class="sound">BOOM</span>
+      </button>
+      <button class="key" data-key="72">
+        <p>H</p>
+        <span class="sound">RIDE</span>
+      </button>
+      <button class="key" data-key="74">
+        <p>J</p>
+        <span class="sound">SNARE</span>
+      </button>
+      <button class="key" data-key="75">
+        <p>K</p>
+        <span class="sound">TOM</span>
+      </button>
+      <button class="key" data-key="76">
+        <p>L</p>
+        <span class="sound">TINK</span>
+      </button>
+    </div>
+
+    <audio data-key="65" src="sounds/clap.wav"></audio>
+    <audio data-key="83" src="sounds/hihat.wav"></audio>
+    <audio data-key="68" src="sounds/kick.wav"></audio>
+    <audio data-key="70" src="sounds/openhat.wav"></audio>
+    <audio data-key="71" src="sounds/boom.wav"></audio>
+    <audio data-key="72" src="sounds/ride.wav"></audio>
+    <audio data-key="74" src="sounds/snare.wav"></audio>
+    <audio data-key="75" src="sounds/tom.wav"></audio>
+    <audio data-key="76" src="sounds/tink.wav"></audio>
+
+    <audio src=""></audio>
+    <script>
+      // KeyDown Event
+      window.addEventListener("keydown", (e) => {
+        const audioFromKey = document.querySelector(
+          `audio[data-key="${e.keyCode}"]`
+        );
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if (!audioFromKey) return;
+        audioFromKey.currentTime = 0;
+        audioFromKey.play();
+        key.classList.add("playing");
+      });
+
+      // Remove Transition Function
+      function removeTransition(e) {
+        if (e.propertyName !== "transform") return;
+        this.classList.remove("playing");
+      }
+
+      const keys = document.querySelectorAll(".key");
+      keys.forEach((key) => {
+        key.addEventListener("transitionend", removeTransition);
+      });
+
+      // Button Click Event
+      const keyButton = document.querySelectorAll(".key");
+      keyButton.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const audioFromButton = document.querySelector(
+            `audio[data-key="${e.target.getAttribute("data-key")}"]`
+          );
+          audioFromButton.currentTime = 0;
+          audioFromButton.play();
+        });
+      });
+    </script>
+  </body>
+</html>
