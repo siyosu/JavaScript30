@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS and CSS Clock</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="assets/logo-github.svg" />
+  </head>
+  <body>
+    <h1>JS & CSS Clock</h1>
+    <p>#2 of JavaScript30</p>
+    <div class="container">
+      <p>Current Time</p>
+      <div class="digital-clock"><p class="current-time">15:25:33</p></div>
+      <div class="clock">
+        <div class="hand second-hand">
+          <svg
+            width="46"
+            height="198"
+            viewBox="0 0 46 198"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25.1213 0.878664C23.9497 -0.292908 22.0503 -0.292908 20.8787 0.878664L1.7868 19.9705C0.615224 21.1421 0.615224 23.0416 1.7868 24.2132C2.95837 25.3848 4.85786 25.3848 6.02944 24.2132L23 7.24263L39.9706 24.2132C41.1421 25.3848 43.0416 25.3848 44.2132 24.2132C45.3848 23.0416 45.3848 21.1421 44.2132 19.9705L25.1213 0.878664ZM26 197.003L26 2.99998H20L20 197.003H26Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+        <div class="hand minute-hand">
+          <svg
+            width="46"
+            height="180"
+            viewBox="0 0 46 180"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25.1213 0.87868C23.9497 -0.292893 22.0503 -0.292893 20.8787 0.87868L1.7868 19.9706C0.615224 21.1421 0.615224 23.0416 1.7868 24.2132C2.95837 25.3848 4.85786 25.3848 6.02944 24.2132L23 7.24264L39.9706 24.2132C41.1421 25.3848 43.0416 25.3848 44.2132 24.2132C45.3848 23.0416 45.3848 21.1421 44.2132 19.9706L25.1213 0.87868ZM26 180L26 3H20L20 180H26Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+        <div class="hand hour-hand">
+          <svg
+            width="46"
+            height="156"
+            viewBox="0 0 46 156"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25.1213 0.87868C23.9497 -0.292893 22.0503 -0.292893 20.8787 0.87868L1.7868 19.9706C0.615224 21.1421 0.615224 23.0416 1.7868 24.2132C2.95837 25.3848 4.85786 25.3848 6.02944 24.2132L23 7.24264L39.9706 24.2132C41.1421 25.3848 43.0416 25.3848 44.2132 24.2132C45.3848 23.0416 45.3848 21.1421 44.2132 19.9706L25.1213 0.87868ZM26 155.003L26 3H20L20 155.003H26Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <script>
+      function setDate() {
+        const now = new Date();
+        const second = now.getSeconds();
+        const minute = now.getMinutes();
+        const hour = now.getHours();
+
+        const hands = document.querySelectorAll(".hand");
+
+        if (second == 0) {
+          hands.forEach((hand) => {
+            hand.classList.add("notransition");
+          });
+        } else if (second == 1) {
+          hands.forEach((hand) => {
+            hand.classList.remove("notransition");
+          });
+        }
+        let minuteBelow9 = minute;
+        if (minuteBelow9 <= 9) {
+          minuteBelow9 = `0${minuteBelow9}`;
+        }
+        const currentTime = document.querySelector(".current-time");
+        currentTime.innerText = `${hour}:${minuteBelow9}:${second}`;
+
+        const secondHand = document.querySelector(".second-hand");
+        const secondDegree = (second / 60) * 360;
+        secondHand.style.transform = `rotate(${secondDegree}deg)`;
+
+        const minHand = document.querySelector(".minute-hand");
+        const minDegree = (minute / 60) * 360;
+        minHand.style.transform = `rotate(${minDegree}deg)`;
+
+        const hourHand = document.querySelector(".hour-hand");
+        const hourDegree = (hour / 12) * 360;
+        hourHand.style.transform = `rotate(${hourDegree}deg)`;
+      }
+      setInterval(setDate, 1000);
+    </script>
+  </body>
+</html>
