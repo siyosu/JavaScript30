@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fun with HTML5 Canvas</title>
+    <style>
+      html,
+      body {
+        font-family: Arial;
+        margin: 0;
+        background: #0b1120;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+      }
+      form {
+        position: absolute;
+        background: #1c2847;
+        width: 20em;
+        height: 4em;
+        padding: 0.5em;
+        border-radius: 0 0 0.4em 0.4em;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      form .group {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+      }
+      .group label {
+        color: white;
+      }
+      .group select,
+      .group input {
+        height: 2em;
+        border: none;
+        border-radius: 0.2em;
+      }
+      canvas {
+        transition: all 0.5s;
+        background: #0b1120;
+        border-radius: 0.4em;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div class="group">
+        <label for="">Blend mode</label>
+        <select id="blend">
+          <option value="" selected>Normal</option>
+          <option value="multiply">Multiply</option>
+          <option value="xor">Xor</option>
+          <option value="screen">Screen</option>
+          <option value="darken">Darken</option>
+          <option value="overlay">Overlay</option>
+          <option value="luminosity">Luminosity</option>
+        </select>
+      </div>
+      <div class="group">
+        <label for="">Brush size</label>
+        <input id="size" type="range" min="10" max="100" value="10" />
+      </div>
+    </form>
+    <canvas id="draw"></canvas>
+
+    <script>
+      const brush = document.querySelector("#size");
+      const blend = document.querySelector("#blend");
+      const canvas = document.querySelector("#draw");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+
+      let isDrawing = false;
+      let lastX = 0;
+      let lastY = 0;
+      let hue = 0;
+      let brushSize = 10;
+
+      function draw(e) {
+        ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+        if (!isDrawing) return;
+        console.log(e);
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+        hue++;
+        if (hue >= 360) {
+          hue = 0;
+        }
+        ctx.lineWidth = brushSize;
+      }
+
+      // Event Listener
+      canvas.addEventListener("mousemove", draw);
+      canvas.addEventListener("mousedown", (e) => {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+      });
+      canvas.addEventListener("mouseup", () => (isDrawing = false));
+      canvas.addEventListener("mouseout", () => (isDrawing = false));
+      brush.addEventListener("change", (e) => {
+        brushSize = e.target.value;
+      });
+      blend.addEventListener("change", (e) => {
+        ctx.globalCompositeOperation = e.target.value;
+      });
+    </script>
+  </body>
+</html>
