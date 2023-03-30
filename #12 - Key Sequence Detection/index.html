@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Key Detection</title>
+    <link rel="icon" href="logo-github.svg" />
+    <style>
+      body {
+        background: url("background.svg");
+        background-size: cover;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        color: white;
+        font-family: Arial;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+  </head>
+  <body>
+    <h1>Type siyosu on your keyboard</h1>
+  </body>
+  <script>
+    const showKey = document.querySelector("h1");
+    const pressed = [];
+    const secretCode = "siyosu";
+    const jsConfetti = new JSConfetti();
+
+    window.addEventListener("keyup", (e) => {
+      pressed.push(e.key);
+      pressed.splice(-secretCode - 1, pressed.length - secretCode.length);
+      showKey.innerText = pressed;
+      if (pressed.join("").includes(secretCode)) {
+        jsConfetti.addConfetti();
+      }
+    });
+  </script>
+</html>
