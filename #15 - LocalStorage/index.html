@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalStorage</title>
+    <link rel="icon" href="logo-github.svg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>To-do list</h1>
+      <ul class="list">
+        <li>List is empty..</li>
+        <li>
+          <input type="checkbox" id="item1" /><label for="item1">Belajar</label>
+        </li>
+      </ul>
+      <form class="add-list">
+        <input type="text" name="item" required />
+        <button type="submit">Submit</button>
+      </form>
+      <div class="btn-group">
+        <button id="clear">Clear all</button>
+        <button id="check">Check all</button>
+        <button id="uncheck">Uncheck all</button>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+body {
+  background: url("background.svg");
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  color: white;
+}
+
+* {
+  font-family: Arial;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  border: 2px solid;
+  width: 30em;
+  border-radius: 0.3em;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  /* text-align: center; */
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.list li {
+  font-size: 1.1rem;
+  height: 2em;
+  border-bottom: 2px solid;
+  padding: 0;
+}
+
+.list label {
+  cursor: pointer;
+  /* border: 2px solid; */
+}
+
+.list input {
+  display: none;
+}
+
+.list input + label::before {
+  content: "◻️";
+}
+
+.list input:checked + label::before {
+  content: "✅";
+}
+
+.add-list {
+  margin: 1em 0;
+}
+
+.add-list input {
+  color: white;
+  padding: 0 0.5em;
+  height: 3em;
+  width: 80%;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 0.3em;
+  outline: none;
+}
+
+.add-list button {
+  height: 3em;
+  border: none;
+  border-radius: 0.3em;
+  width: 19%;
+  color: white;
+  background: #8930fe;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+}
+#clear,
+#check,
+#uncheck {
+  height: 3em;
+  border: none;
+  margin: 0.5em 0;
+  border-radius: 0.5em;
+  width: 30%;
+  color: white;
+}
+
+#clear {
+  background: #8930fe;
+}
+
+#check {
+  background: #fe9730;
+}
+
+#uncheck {
+  background: #fe3030;
+}
+button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
