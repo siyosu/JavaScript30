@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webcam Fun</title>
+    <link rel="icon" href="assets/logo-github.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Webcam Fun</h1>
+      <div class="camera" style="display: none">
+        <canvas id="board"></canvas>
+
+        <form class="filter">
+          <select name="filter" id="filter">
+            <option value="og" selected>Normal</option>
+            <option value="re">Red Effect</option>
+            <option value="bnw">Black & White</option>
+            <option value="dz">Dizzy</option>
+            <option value="rgb">RGB Glitch</option>
+            <option value="mood">Mood</option>
+          </select>
+        </form>
+        <div class="btn-wrapper">
+          <button onclick="takePhoto()"><i class="fa fa-camera"></i></button>
+        </div>
+      </div>
+      <div class="gallery"></div>
+
+      <video id="srcvideo" style="display: none"></video>
+      <audio src="assets/snap.mp3" class="snap"></audio>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>

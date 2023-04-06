@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+video {
+  position: absolute;
+  top: 10%;
+  width: 300px;
+}
+
+body {
+  background: url("assets/background.svg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+}
+
+.camera {
+  margin: 0 auto;
+  border: 2px solid;
+  border-radius: 0.3em;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+  backdrop-filter: blur(10px);
+}
+
+.btn-wrapper {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+.camera button {
+  height: 2.5em;
+  width: 2.5em;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  cursor: pointer;
+}
+.camera button:hover {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fbff00;
+}
+
+.filter {
+  width: 15em;
+  height: 2.5em;
+}
+.filter select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0.2em;
+  padding: 0 0.5em;
+}
+
+.gallery {
+  margin-top: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+}
+.gallery a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.gallery img {
+  height: 150px;
+  border: 0.5em solid;
+  border-bottom: 2em solid;
+  border-radius: 0.3em;
+}
+.gallery a:nth-of-type(odd) {
+  transform: rotate(-10deg);
+}
+.gallery a:nth-of-type(even) {
+  transform: rotate(10deg);
+}
+.gallery a:hover {
+  color: #ba76f5;
+  z-index: 99;
+  transform: rotate(0deg) scale(1.5);
+  backdrop-filter: blur(15px);
+}
