@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Follow Along Link Highlighter</title>
+    <link rel="icon" href="logo-github.svg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+      <a href="#">Projects</a>
+    </nav>
+    <main>
+      <div class="text">
+        <p>
+          Lorem, ipsum dolor sit amet <a href="#">consectetur</a> adipisicing
+          elit. Pariatur.
+        </p>
+        <p>
+          Tenetur suscipit quas
+          <a href="#">repellendus</a> soluta modi adipisci velit possimus quia
+          mollitia dolor minus reiciendis iure cum saepe aspernatur sed est!
+        </p>
+        <p>
+          Culpa <a href="#">accusantium</a> corrupti atque nemo molestiae
+          voluptatum voluptate rem ex alias quo dignissimos.
+        </p>
+      </div>
+      <div class="container">
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+      </div>
+    </main>
+    <script>
+      const links = document.querySelectorAll("a");
+      const blocks = document.querySelectorAll(".block");
+      const highlight = document.createElement("span");
+
+      highlight.classList.add("highlight");
+      document.body.appendChild(highlight);
+
+      function highlightObject() {
+        const coordsObject = this.getBoundingClientRect();
+        const coords = {
+          width: coordsObject.width,
+          height: coordsObject.height,
+          top: coordsObject.top + window.scrollY,
+          left: coordsObject.left + window.scrollX,
+        };
+        highlight.style.width = `${coords.width}px`;
+        highlight.style.height = `${coords.height}px`;
+        highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+      }
+      links.forEach((link) => {
+        link.addEventListener("mouseover", highlightObject);
+      });
+      blocks.forEach((block) => {
+        block.addEventListener("mouseover", highlightObject);
+      });
+    </script>
+  </body>
+</html>
