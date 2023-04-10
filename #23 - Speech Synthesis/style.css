@@ -1,0 +1,57 @@
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+body {
+  background-image: url("background.svg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+
+.container {
+  width: clamp(30em, 40vw, 40em);
+  border: 4px solid;
+  border-radius: 15px;
+  padding: 1em;
+  backdrop-filter: blur(10px);
+}
+.container select {
+  margin: 1em 0;
+  height: 3em;
+  width: 100%;
+  border-radius: 5px;
+}
+.container label {
+  margin-top: 1em;
+}
+.container input {
+  width: 100%;
+}
+.container textarea {
+  margin: 1em 0;
+  width: 100%;
+  height: 6em;
+  font-size: 1rem;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+label,
+input,
+textarea {
+  display: block;
+}
+
+.container button {
+  height: 3em;
+  width: 49%;
+  border-radius: 5px;
+}
