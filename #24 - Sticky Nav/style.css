@@ -1,0 +1,90 @@
+*,
+html,
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+header {
+  background-image: url(https://images.unsplash.com/photo-1681105192375-aadb6e706216?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80);
+  background-size: cover;
+  height: 20rem;
+  display: grid;
+  place-content: center;
+  color: brown;
+}
+
+body {
+  background-image: url("background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+nav {
+  background-color: burlywood;
+  height: 3.5em;
+  width: 100%;
+  transition: all 0.3s;
+  top: 0;
+  display: flex;
+  position: relative;
+  z-index: 99;
+}
+
+.fixed-nav nav {
+  position: fixed;
+}
+
+nav ul {
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  text-align: center;
+  display: flex;
+}
+
+nav li {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li.logo {
+  font-size: 1.7em;
+  font-weight: 700;
+  max-width: 0;
+  color: #f5f5f5;
+  background-color: brown;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.fixed-nav li.logo {
+  max-width: 500px;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #f5f5f5;
+  text-transform: uppercase;
+}
+
+a:hover {
+  color: gray;
+}
+main {
+  margin: 3em 2em;
+  padding: 1em;
+  background-color: rgb(255, 233, 174);
+}
+main p {
+  line-height: 1.5;
+}
+
+main img {
+  width: 100%;
+}
