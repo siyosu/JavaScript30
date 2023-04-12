@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Understanding JavaScript's Capture</title>
+    <link rel="icon" href="logo-github.svg" />
+    <style>
+      body {
+        background: url("background.svg");
+        background-size: cover;
+        height: 100vh;
+        color: white;
+      }
+      .one {
+        padding: 2em;
+        background-color: burlywood;
+      }
+      .two {
+        padding: 2em;
+        background-color: brown;
+        margin: auto;
+      }
+      .three {
+        width: 80%;
+        height: 15em;
+        background-color: tomato;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Check console</h1>
+    <div class="one">
+      <div class="two">
+        <div class="three"></div>
+      </div>
+    </div>
+    <button>Click me</button>
+    <script>
+      const divs = document.querySelectorAll("div");
+      const button = document.querySelector("button");
+      function logText(e) {
+        console.log(this.classList.value || "You clicked me");
+        // e.stopPropagation(); // Stop Bubbling
+      }
+
+      divs.forEach((div) => {
+        const capture = document.querySelector("#capture");
+        div.addEventListener("click", logText, {
+          capture: false,
+        });
+      });
+
+      button.addEventListener("click", logText, {
+        once: true,
+      });
+    </script>
+  </body>
+</html>
