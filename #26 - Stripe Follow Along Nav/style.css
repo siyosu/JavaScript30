@@ -1,0 +1,118 @@
+body {
+  background: url("background.svg");
+  background-size: cover;
+  height: 100vh;
+  color: #f5f5f5;
+  font-family: Tahoma;
+}
+
+ul {
+  list-style: none;
+}
+nav .menu {
+  max-width: 600px;
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.item {
+  padding: 2em 0;
+  position: relative;
+}
+.item > a {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f5f5f5;
+  padding: 10px 20px;
+  margin: 20px;
+  background: #ff1d4e7b;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100px;
+}
+
+.dropdown {
+  opacity: 0;
+  padding: 1em;
+  position: absolute;
+  top: 100%;
+  color: black;
+  overflow: hidden;
+  transition: all 0.5s;
+  gap: 1em;
+  display: none;
+}
+
+.trigger-enter .dropdown {
+  display: flex;
+}
+.trigger-enter-active .dropdown {
+  opacity: 1;
+}
+
+.about {
+  left: -50%;
+  width: 20em;
+  align-items: center;
+}
+.links {
+  left: -40%;
+  width: 12em;
+  flex-direction: column;
+  align-items: center;
+}
+.social {
+  left: -5%;
+  width: 12em;
+  flex-direction: column;
+}
+.social a {
+  color: #f5f5f5;
+}
+
+.twitter {
+  background: #30baff;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+.github {
+  background: #616161;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+.linkedin {
+  background: #4171f3;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: #f5f5f5;
+  position: absolute;
+  border-radius: 5px;
+  justify-content: center;
+  transition: all 0.3s, opacity 0.1s, transform 0.2s;
+  transform-origin: 50% 0;
+  display: none;
+}
+.box.open {
+  display: flex;
+}
+.arrow {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: #f5f5f5;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  margin: -20px;
+}

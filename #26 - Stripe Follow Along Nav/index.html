@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stripe Follow Along Nav</title>
+    <link rel="icon" href="logo-github.svg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="box">
+        <span class="arrow"></span>
+      </div>
+      <ul class="menu">
+        <li class="item">
+          <a href="#">About me</a>
+          <div class="dropdown about">
+            <img
+              src="https://avatars.githubusercontent.com/u/100291565?v=4"
+              alt="Luffy"
+            />
+            <p>
+              I want to become a good website developer, and I LOVE ONE PIECE
+            </p>
+          </div>
+        </li>
+        <li class="item">
+          <a href="#">Links</a>
+          <ul class="dropdown links">
+            <li>Random Link 1 <a href="#">Example</a></li>
+            <li>Random Link 2 <a href="#">Example</a></li>
+            <li>Random Link 3 <a href="#">Example</a></li>
+          </ul>
+        </li>
+        <li class="item">
+          <a href="#">Social Media</a>
+          <ul class="dropdown social">
+            <li class="twitter"><a href="#">Twitter</a></li>
+            <li class="github"><a href="#">Github</a></li>
+            <li class="linkedin"><a href="#">Linkedin</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <script>
+      const triggers = document.querySelectorAll(".menu > li");
+      const box = document.querySelector(".box");
+      const nav = document.querySelector("nav");
+
+      function handleEnter() {
+        this.classList.add("trigger-enter");
+        setTimeout(() => {
+          if (this.classList.contains("trigger-enter")) {
+            this.classList.add("trigger-enter-active");
+          }
+        }, 150);
+
+        const dropdown = this.querySelector(".dropdown");
+        box.classList.add("open");
+
+        const dropdownCoords = dropdown.getBoundingClientRect();
+        const navCoords = nav.getBoundingClientRect();
+
+        const coords = {
+          width: dropdownCoords.width,
+          height: dropdownCoords.height,
+          top: dropdownCoords.top - navCoords.top,
+          left: dropdownCoords.left - navCoords.left,
+        };
+
+        box.style.width = `${coords.width}px`;
+        box.style.height = `${coords.height}px`;
+        box.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+      }
+
+      function handleLeave() {
+        this.classList.remove("trigger-enter", "trigger-enter-active");
+        box.classList.remove("open");
+      }
+
+      triggers.forEach((trigger) =>
+        trigger.addEventListener("mouseenter", handleEnter)
+      );
+      triggers.forEach((trigger) =>
+        trigger.addEventListener("mouseleave", handleLeave)
+      );
+    </script>
+  </body>
+</html>
