@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Click and Drag</title>
+    <link rel="icon" href="logo-github.svg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="slider">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">7</div>
+      <div class="item">8</div>
+      <div class="item">9</div>
+      <div class="item">10</div>
+      <div class="item">11</div>
+      <div class="item">12</div>
+    </div>
+    <script>
+      const slider = document.querySelector(".slider");
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      function handleMouseDown(e) {
+        isDown = true;
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      }
+
+      function handleMouseUpAndLeave() {
+        isDown = false;
+      }
+
+      function handleMouseMove(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+      }
+
+      slider.addEventListener("mousedown", handleMouseDown);
+      slider.addEventListener("mouseup", handleMouseUpAndLeave);
+      slider.addEventListener("mouseleave", handleMouseUpAndLeave);
+      slider.addEventListener("mousemove", handleMouseMove);
+    </script>
+  </body>
+</html>
