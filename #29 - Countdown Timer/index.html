@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="logo-github.svg" />
+  </head>
+  <body>
+    <h1>Countdown</h1>
+    <div class="countdown">
+      <h2 id="time">00:00:00</h2>
+      <div class="btn-group">
+        <button id="setting">Set Timer</button>
+        <button id="toggle" class="">Start</button>
+      </div>
+      <form name="settingForm">
+        <input
+          type="number"
+          name="minutes"
+          id="minutes"
+          min="1"
+          max="1440"
+          placeholder="1 - 1440"
+          required
+        />
+        <button id="submit">Submit</button>
+        <button type="button" id="cancel">Cancel</button>
+      </form>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
